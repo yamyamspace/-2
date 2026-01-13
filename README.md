@@ -17,7 +17,7 @@ bbb
 
 ccc
 
-```C // ```back quote로 코드 시작 알림
+```C
 int main()
 {
     return 10;
