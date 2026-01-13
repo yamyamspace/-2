@@ -17,7 +17,7 @@ bbb
 
 ccc
 
-```C
+```c
 int main()
 {
     return 10;
