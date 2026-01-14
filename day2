@@ -1,0 +1,183 @@
+pcc028@ajousw:~$ git pull
+pcc028@ajousw:~/pcc2026$ mkdir day2
+pcc028@ajousw:~/pcc2026$ cd ../../
+pcc028@ajousw:/home/course/pcc$ shopt -s globstar
+pcc028@ajousw:/home/course/pcc$ ls -al
+
+pcc028@ajousw:/home/course/pcc$ ls -al **/day2 > ~/0114_attend.txt
+pcc028@ajousw:/home/course/pcc$ cd
+pcc028@ajousw:~$ cd pcc2026
+
+pcc028@ajousw:~/pcc2026$ cd day2
+pcc028@ajousw:~/pcc2026/day2$ cp ../day1/hello
+
+pcc028@ajousw:~/pcc2026/day2$ cd
+
+pcc028@ajousw:~/pcc2026$ cd day2/
+pcc028@ajousw:~/pcc2026/day2$ ls ../day1
+allfile  a.out  errorfile  hello2.c  hello.c  hello.java  hellostdio.c  infile  outtest  stdoutfile
+pcc028@ajousw:~/pcc2026/day2$ cp ../day1/hello.c ./
+pcc028@ajousw:~/pcc2026/day2$ cp ../day1/hellostdio.c ./
+pcc028@ajousw:~/pcc2026/day2$ echo 999
+999
+pcc028@ajousw:~/pcc2026/day2$ echo -n 999  // -n을함으로써 출력 뒤에 띄어쓰기 없음. 바로 프롬프트 실행.
+999pcc028@ajousw:~/pcc2026/day2$ echo 999> inputfile // 띄어쓰기 안해서 파일에 999 반영 안됨
+pcc028@ajousw:~/pcc2026/day2$ echo -n 999 infile2
+999 infile2pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 16
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:19 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    0 Jan 14 10:19 inputfile
+
+pcc028@ajousw:~/pcc2026/day2$ echo -n 999 >infile2
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 20
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:20 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    3 Jan 14 10:20 infile2
+-rw-r--r-- 1 pcc028 pcc    0 Jan 14 10:19 inputfile
+pcc028@ajousw:~/pcc2026/day2$ wc wc in* // wc 워드 카운터
+wc: wc: No such file or directory
+0 1 3 infile2
+0 0 0 inputfile
+0 1 3 total
+pcc028@ajousw:~/pcc2026/day2$ echo 999 > inputfile
+pcc028@ajousw:~/pcc2026/day2$ ls
+hello.c  hellostdio.c  infile2  inputfile
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 24
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:20 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    3 Jan 14 10:20 infile2
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:23 inputfile
+pcc028@ajousw:~/pcc2026/day2$ wc wc in*
+wc: wc: No such file or directory
+0 1 3 infile2
+1 1 4 inputfile
+1 2 7 total
+pcc028@ajousw:~/pcc2026/day2$ hostname
+ajousw.kr
+pcc028@ajousw:~/pcc2026/day2$ ls
+hello.c  hellostdio.c  infile2  inputfile
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 24
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:20 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    3 Jan 14 10:20 infile2
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:23 inputfile
+pcc028@ajousw:~/pcc2026/day2$ file in *
+in:           cannot open `in' (No such file or directory)
+hello.c:      C source, ASCII text
+hellostdio.c: C source, ASCII text
+infile2:      ASCII text, with no line terminators
+inputfile:    ASCII text
+
+pcc028@ajousw:~/pcc2026/day2$ unix2dos inputfile input_dos
+unix2dos: converting file inputfile to DOS format...
+unix2dos: input_dos: No such file or directory
+unix2dos: Skipping input_dos, not a regular file.
+pcc028@ajousw:~/pcc2026/day2$ unix2mac inputfile > input_mac
+unix2mac: converting file inputfile to Mac format...
+pcc028@ajousw:~/pcc2026/day2$ ls
+hello.c  hellostdio.c  infile2  inputfile  input_mac
+
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 24
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:41 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    3 Jan 14 10:20 infile2
+-rw-r--r-- 1 pcc028 pcc    5 Jan 14 10:41 inputfile
+-rw-r--r-- 1 pcc028 pcc    0 Jan 14 10:41 input_mac
+
+pcc028@ajousw:~/pcc2026/day2$ file *
+hello.c:      C source, ASCII text
+hellostdio.c: C source, ASCII text
+infile2:      ASCII text, with no line terminators
+inputfile:    ASCII text, with CRLF line terminators
+input_mac:    empty
+pcc028@ajousw:~/pcc2026/day2$ dos2unix -n inputfile in_linux
+dos2unix: converting file inputfile to file in_linux in Unix format...
+pcc028@ajousw:~/pcc2026/day2$ cp inputfile in_dos
+pcc028@ajousw:~/pcc2026/day2$ unix2mac -n in_linux in_mac
+unix2mac: converting file in_linux to file in_mac in Mac format...
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 36
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:43 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    5 Jan 14 10:43 in_dos
+-rw-r--r-- 1 pcc028 pcc    3 Jan 14 10:20 infile2
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:43 in_linux
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:43 in_mac
+-rw-r--r-- 1 pcc028 pcc    5 Jan 14 10:41 inputfile
+-rw-r--r-- 1 pcc028 pcc    0 Jan 14 10:41 input_mac
+pcc028@ajousw:~/pcc2026/day2$ rm infile2 input_dos input_mac inputfile
+rm: cannot remove 'input_dos': No such file or directory
+pcc028@ajousw:~/pcc2026/day2$ file *
+hello.c:      C source, ASCII text
+hellostdio.c: C source, ASCII text
+in_dos:       ASCII text, with CRLF line terminators
+in_linux:     ASCII text
+in_mac:       ASCII text, with CR line terminators
+pcc028@ajousw:~/pcc2026/day2$ rm infile2 input_dos in_mac inputfile
+rm: cannot remove 'infile2': No such file or directory
+rm: cannot remove 'input_dos': No such file or directory
+rm: cannot remove 'inputfile': No such file or directory
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 24
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:45 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    5 Jan 14 10:43 in_dos
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:43 in_linux
+pcc028@ajousw:~/pcc2026/day2$ od -x in_linux
+0000000 3939 0a39
+0000004
+pcc028@ajousw:~/pcc2026/day2$ unix2mac -n in_linux in_mac
+unix2mac: converting file in_linux to file in_mac in Mac format...
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 28
+drwxr-xr-x 2 pcc028 pcc 4096 Jan 14 10:47 .
+drwxr-xr-x 5 pcc028 pcc 4096 Jan 14 10:11 ..
+-rw-r--r-- 1 pcc028 pcc  111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc  160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc    5 Jan 14 10:43 in_dos
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:43 in_linux
+-rw-r--r-- 1 pcc028 pcc    4 Jan 14 10:47 in_mac
+pcc028@ajousw:~/pcc2026/day2$ cp a.out day2^C
+pcc028@ajousw:~/pcc2026/day2$ cp a.out day2
+cp: cannot stat 'a.out': No such file or directory
+pcc028@ajousw:~/pcc2026/day2$ cp ../a.out ./
+cp: cannot stat '../a.out': No such file or directory
+pcc028@ajousw:~/pcc2026/day2$ cp ../day1/a.out ./
+pcc028@ajousw:~/pcc2026/day2$ ls -al
+total 48
+drwxr-xr-x 2 pcc028 pcc  4096 Jan 14 10:49 .
+drwxr-xr-x 5 pcc028 pcc  4096 Jan 14 10:11 ..
+-rwxr-xr-x 1 pcc028 pcc 16696 Jan 14 10:49 a.out
+-rw-r--r-- 1 pcc028 pcc   111 Jan 14 10:18 hello.c
+-rw-r--r-- 1 pcc028 pcc   160 Jan 14 10:19 hellostdio.c
+-rw-r--r-- 1 pcc028 pcc     5 Jan 14 10:43 in_dos
+-rw-r--r-- 1 pcc028 pcc     4 Jan 14 10:43 in_linux
+-rw-r--r-- 1 pcc028 pcc     4 Jan 14 10:47 in_mac
+pcc028@ajousw:~/pcc2026/day2$ 9dn-xn8h
+9dn-xn8h: command not found
+pcc028@ajousw:~/pcc2026/day2$ od -x --endian big in_linux
+0000000 3939 390a
+0000004
+pcc028@ajousw:~/pcc2026/day2$ od -x --endian big in_dos
+0000000 3939 390d 0a00
+0000005
+pcc028@ajousw:~/pcc2026/day2$
