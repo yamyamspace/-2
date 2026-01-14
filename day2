@@ -172,8 +172,7 @@ drwxr-xr-x 5 pcc028 pcc  4096 Jan 14 10:11 ..
 -rw-r--r-- 1 pcc028 pcc     5 Jan 14 10:43 in_dos
 -rw-r--r-- 1 pcc028 pcc     4 Jan 14 10:43 in_linux
 -rw-r--r-- 1 pcc028 pcc     4 Jan 14 10:47 in_mac
-pcc028@ajousw:~/pcc2026/day2$ 9dn-xn8h
-9dn-xn8h: command not found
+
 pcc028@ajousw:~/pcc2026/day2$ od -x --endian big in_linux
 0000000 3939 390a
 0000004
@@ -181,3 +180,44 @@ pcc028@ajousw:~/pcc2026/day2$ od -x --endian big in_dos
 0000000 3939 390d 0a00
 0000005
 pcc028@ajousw:~/pcc2026/day2$
+
+control+d하면 터미널 종료됨.
+
+pcc028@ajousw:/dev$ ls -l std*
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stderr -> /proc/self/fd/2
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdin -> /proc/self/fd/0
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdout -> /proc/self/fd/1
+pcc028@ajousw:/dev$ cd /proc/
+pcc028@ajousw:/proc$ ls -l self
+lrwxrwxrwx 1 root root 0 Sep  9 21:55 self -> 1131272
+
+pcc028@ajousw:/proc/self$ ls -l /dev/stdin
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 /dev/stdin -> /proc/self/fd/0
+pcc028@ajousw:/proc/self$ cd fd
+pcc028@ajousw:/proc/self/fd$ ls -al
+total 0
+dr-x------ 2 pcc028 pcc  0 Jan 14 11:26 .
+dr-xr-xr-x 9 pcc028 pcc  0 Jan 14 11:26 ..
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 0 -> /dev/pts/15   //내 터미널에 연결되어있음. 각 터미널에서 디폴트로 0= stdin, 1= stdout, 2= stderr로 정해놓음.
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 1 -> /dev/pts/15
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 2 -> /dev/pts/15
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 255 -> /dev/pts/15
+pcc028@ajousw:/proc/self/fd$ tty          //내 터미널 번호 보기.
+/dev/pts/15
+
+pcc028@ajousw:~/pcc2026/day2$ ls -l in_* out_* 
+ls: cannot access 'out_*': No such file or directory    //stderr에 출력됨
+-rw-r--r-- 1 pcc028 pcc 5 Jan 14 10:43  in_dos          //stdout에 출력됨
+-rw-r--r-- 1 pcc028 pcc 4 Jan 14 10:43  in_linux
+-rw-r--r-- 1 pcc028 pcc 4 Jan 14 10:47  in_mac
+-rw-r--r-- 1 pcc028 pcc 3 Jan 14 11:13  in_no
+
+/dev/null은 버리는 명령어.
+
+pcc028@ajousw:~/pcc2026/day2$ ls -l in_dos in_linux out_dos out_linux |& wc -l
+4    // |&는 표준 에러와 표준 출력 모두 포함.
+
+pcc028@ajousw:~/pcc2026/day2$ a.out < in_linux 2>&1 1> out44 // 순차적으로 처리! stderr는 화면으로 나옴 이미 실행됨. 이후 
+
+ a.out < in_linux 1> out44 2>&1
+
