@@ -221,3 +221,22 @@ pcc028@ajousw:~/pcc2026/day2$ a.out < in_linux 2>&1 1> out44 // 순차적으로 
 
  a.out < in_linux 1> out44 2>&1
 
+/////redirection -> EOF ->무한루프
+pcc028@ajousw:~/pcc2026/day2$ a.out < in_linux
+STDOUT: 999
+OUT: Hello 999
+pcc028@ajousw:~/pcc2026/day2$ echo AAA >err_linux
+pcc028@ajousw:~/pcc2026/day2$ a.out < err_linux
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+Stderr retry. Type integer
+out of tries quit program
+
+pcc028@ajousw:~/pcc2026/day2$ { sleep 1; echo 1; ps -l ; sleep 1 ; } | { sleep 3; echo 2; ps -l ; sleep 1 ; } | { sleep 3; echo 3; ps -l; }  //중괄호 앞뒤로 띄어쓰기
