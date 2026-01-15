@@ -13,3 +13,7 @@
   ld file.o -o file 을 사용하기 위해서는 file.s코드에 _start를 명시해야한다.
 ls -o main.o main // main.o파일과 main파일을 long format으로 출력하는데 소유자 (owner)만 보여주고 그룹은 생략,
 ls -l이 젤 많이 보여줌.
+
+multiple file compile
+프로파일링 하려면 함수를 쪼개야 최적화 가능. 메인함수에 다 쓰면 최적화 불가능.
+cc file1.c file2.c 하면 두개의 파일을 같이 컴파일 할 수 있음.
