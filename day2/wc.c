@@ -1,17 +1,15 @@
 #include <stdio.h>
-#include <ctype.h>  // isspace()
+#include <ctype.h>   // isspace()
+#include <stdlib.h>  // exit()
 
-int main(void) {
+void count_stream(FILE *fp, const char *name) {
     int c;
-    long bytes = 0, words = 0, lines = 0;
+    size_t bytes = 0, words = 0, lines = 0;
     int in_word = 0;
 
-    while ((c = getchar()) != EOF) {
-        bytes++;  // ¸ð¹®À ÆÇ (space, tab, newline)
-
-        if (c == '\n')
-            lines++;
-
+    while ((c = fgetc(fp)) != EOF) {
+        bytes++;
+        if (c == '\n') lines++;
         if (isspace(c)) {
             in_word = 0;
         } else {
@@ -22,7 +20,26 @@ int main(void) {
         }
     }
 
-    printf(" %ld %ld %ld\n", lines, words, bytes);
-    return 0;
+    if (name)
+        printf("%zu %zu %zu %s\n", lines, words, bytes, name);
+    else
+        printf("%zu %zu %zu\n", lines, words, bytes);
 }
 
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        // ǥÁ À·Âó¸®
+        count_stream(stdin, NULL);
+    } else {
+        for (int i = 1; i < argc; i++) {
+            FILE *fp = fopen(argv[i], "r");
+            if (!fp) {
+                perror(argv[i]);
+                exit(EXIT_FAILURE);
+            }
+            count_stream(fp, argv[i]);
+            fclose(fp);
+        }
+    }
+    return 0;
+}
