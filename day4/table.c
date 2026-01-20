@@ -1,0 +1,6 @@
+#define BUFSIZE 1024
+#define TABLESIZE BUFSIZE
+#undef BUFSIZE
+#define BUFSIZE 37
+
+TABLESIZE
