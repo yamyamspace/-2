@@ -65,9 +65,13 @@ inline function inline 함수는 성능 최적화를 위해 코드를 호출 위
 * include file 
     1. #include가 recursion이 일어나면 안됨. 프로세스 죽음.
     2. gcc option -I 
-
-        ????????????현재 위치: 컴파일이 일어나는 위치? or 전처리 중인 소스 파일이 실제 존재하는 디렉토리리?????????????????
-    
+        현재 디렉토리는 컴파일이 일어나는 위치 (현재 디렉토리는 소스코드 위치 아님)
+        
+        cc so/hello.c 명령어를 치면
+        소스 파일 위치: so/hello.c
+        컴파일이 실행된 위치: day4
+        출력 파일 위치: 현재 디렉토리 (.)
+        
         default include location : -I 는 default에 추가되는 경로 ./usr/include/
     3. prevent multible include 
         #pragma once
