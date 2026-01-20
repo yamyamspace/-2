@@ -62,6 +62,8 @@ inline function inline 함수는 성능 최적화를 위해 코드를 호출 위
     3. conditional compile : #def aaa 100  #if aaa >50 // 1번 후에 2번(aaa가 100으로 치환된 후) 순서 중요
     4. line control diagnostics.
 
+        #define미리 안하고 중간에 값 넣어주려면 cpp -DAAA=0 cpptest.c
+        -D 명령어 사용.(define)
 * include file 
     1. #include가 recursion이 일어나면 안됨. 프로세스 죽음.
     2. gcc option -I 
