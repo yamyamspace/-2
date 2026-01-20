@@ -86,7 +86,7 @@ inline function inline 함수는 성능 최적화를 위해 코드를 호출 위
 
 vi 에디터에서 라인 넘버 보려면     :set number 치기
 괄호 짝 찾아줌 : %
-컴파일 할때 -D 옵션 넣으면 컴파일시 define 됨 미리 정의할 필요 없음음.
+컴파일 할때 -D 옵션 넣으면 컴파일시 define 됨 미리 정의할 필요 없음.
 
 * macro definiton
 오퍼레이션 우선순위 헷갈리니까 무조건 괄호 쓰기!!!
@@ -98,8 +98,7 @@ bad ex) #define BUFSIZE 1024
         #define TABLESIZE BUFSIZE
         #undef BUFSIZE
         #define BUFSIZE 37
-
-        TABLESIZE 결과=37. 헷갈림. 이렇게(중간에 undef, define바꾸기 x) 코드 짜면 안됨.
+TABLESIZE 결과=37. 헷갈림. 이렇게(중간에 undef, define바꾸기 x) 코드 짜면 안됨.
 
 'if문'이 '?' operator보다 100배 느림. ?가 성능이 월등히 좋음 단, 괄호 사용 중요!
 * stringization #foo을 치면 "foo"가 됨.
@@ -109,3 +108,15 @@ bad ex) #define BUFSIZE 1024
 
 "~~~" "~~~" 하면 c컴파일러가 자동으로 concat해줌
 ex)  printf("Hello World!\n" "aaaa\n");
+
+##컴퓨터별 자료형 크기
+64비트 컴퓨터 : pointer와 long이 8바이트 8*2^64 byte
+ vs 차이점
+32비트 컴퓨터 : pointer와 long이 4바이트 4*2^32 byte
+optimize기본:
+32비트 컴퓨터에서 16비트 공간 연산이 32비트 공간 연산보체다 오래걸림. convert 추가 작업 필요-> 성능이 안좋아짐.
+
+2의보수 음수를 오른쪽으로 끝까지 shift하면 -1이 됨. 음수는 옮기면서 왼쪽에 1을 채워서 그럼. 32비트 컴퓨터에서 32비트 shift하면 양수는 0이됨.
+모든 비트를 1로 만들려면 a=-1;
+16비트로 표현할 수 있는 가장 큰 양의 정수 :ox7fff
+32비트 // : ox7fffffff
