@@ -84,7 +84,7 @@ inline function inline 함수는 성능 최적화를 위해 코드를 호출 위
     2. delete code 
         ex) #if 0 ... #endif
 
-vi 에디터에서 라인 넘버 보려면     :set number 
+vi 에디터에서 라인 넘버 보려면     :set number 치기
 괄호 짝 찾아줌 : %
 컴파일 할때 -D 옵션 넣으면 컴파일시 define 됨 미리 정의할 필요 없음음.
 
@@ -92,4 +92,20 @@ vi 에디터에서 라인 넘버 보려면     :set number
 오퍼레이션 우선순위 헷갈리니까 무조건 괄호 쓰기!!!
 함수형 매크로를 쓸때 argument (a)가 나올때마다 괄호를 싸야 함. 
 ex) #define f(a) ((a)*(a))
+
 bad ex) #define f(a) a*a  b=f(20+13)결과: b=20+13*20+13 
+bad ex) #define BUFSIZE 1024
+        #define TABLESIZE BUFSIZE
+        #undef BUFSIZE
+        #define BUFSIZE 37
+
+        TABLESIZE 결과=37. 헷갈림. 이렇게(중간에 undef, define바꾸기 x) 코드 짜면 안됨.
+
+'if문'이 '?' operator보다 100배 느림. ?가 성능이 월등히 좋음 단, 괄호 사용 중요!
+* stringization #foo을 치면 "foo"가 됨.
+* concatenation a ## b을 치면 ab 붙여쓰기.
+
+매크로로 매크로 function call하면 안됨. 나쁜 코드.
+
+"~~~" "~~~" 하면 c컴파일러가 자동으로 concat해줌
+ex)  printf("Hello World!\n" "aaaa\n");
