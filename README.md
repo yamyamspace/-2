@@ -168,7 +168,30 @@ in f() = 1 21882 // 여기서 1은 main의 b값 근데 원래 f함수는 main의
 100 - 1 2
 보안을 위해 다 쓴 메모리에 일부러 가비지값 넣기!
 
+##pointer
+int * a; // a는 주소, *a는 a의 주소에 있는 값은 integer
+(int *) qa; //error type conversion
 
+```c
+#include <stdio.h>
+int main()
+{
+        int b;
+        int * a;
+        int (*pa);
+        int * qa;
 
+        printf("%p %p %p %p\n", &b, a, pa, qa); // garbage data가 출력됨.
+        a = pa = qa = &b;
+        printf("%p %p %p %p\n", &b, a, pa, qa);
+}
+```
+$ a.out
+0x7ffe91f2a8dc (nil) 0x55ab8026c080 0x7ffe91f2a9f0  // garbage data, nil로 초기화 시키기!
+0x7ffe91f2a8dc 0x7ffe91f2a8dc 0x7ffe91f2a8dc 0x7ffe91f2a8dc
 
-
+* *&b = *(&b)는 b의 주소에 있는 값.
+* null주소에 있는 값은 가져올 수 없다.
+* 좋은 습관: free(pi); pi= NULL; free 후 null로 만들기.
+* const(변하지 않음)가 앞에 있는 것을 수식. int * const A //A는 안변하는 포인터인데 그 안의 int 값은 변할 수 있음 int앞에는는 const없어서.
+* const를 쓰고 타입 캐스팅하면 const사용 안됨. 그 외 경우에는 const값을 바꾸면 컴파일러가 에러를 내줌
