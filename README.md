@@ -195,3 +195,22 @@ $ a.out
 * 좋은 습관: free(pi); pi= NULL; free 후 null로 만들기.
 * const(변하지 않음)가 앞에 있는 것을 수식. int * const A //A는 안변하는 포인터인데 그 안의 int 값은 변할 수 있음 int앞에는는 const없어서.
 * const를 쓰고 타입 캐스팅하면 const사용 안됨. 그 외 경우에는 const값을 바꾸면 컴파일러가 에러를 내줌
+* int *a; //a++ 주소 4증가
+* int vector[] ={100,200,300}; int *p0= vector; //vector == &vector[0] == 배열의 첫번째 원소 주소
+
+```c
+#include <stdio.h>
+int main()
+{
+        int arr[3] = {100,200,300};
+        int * p =arr;
+        int a = 0;
+        a = *p + *++p;
+        printf("%d\n", a);
+        int l=0;
+        printf("%d\n", l++ + 10*l++ + 100*++l); //310
+}
+```
+답이 310인 이유: 처음 l++에서 계산시 0->1반영 안됨. 10*l++에서 1*10, l=2 아직 계산에 반영 안됨. ++l=3 3*100 따라서 다 더하면 310 왼쪽에서부터 순서대로 계산.
+
+main함수에서 int * 10개 선언, fmalloc함수에 파라미터로 넘김. 주소에 malloc으로 넣어서 끝냄. 그리고 그 malloc에 데이터 쓰기.
