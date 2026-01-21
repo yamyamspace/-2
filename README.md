@@ -120,3 +120,54 @@ optimize기본:
 모든 비트를 1로 만들려면 a=-1;
 16비트로 표현할 수 있는 가장 큰 양의 정수 :ox7fff
 32비트 // : ox7fffffff    0111이 7이라서 맨 앞이 7   0111 1111 1111 1111 1111 1111 1111 1111
+
+
+## Day 5
+* floating 데이터를 int로 받아서 비트를 조작하여 x2의 n제곱, /2의 n제곱을 할 수 있다. bit masking사용.
+* 데이터 타입을 모르면 (void *)로 처리 가능 하지만 위험성은 있음.
+
+### memory models
+* static - 함수, 함수 내 static variable, 0으로 디폴트 초기화.
+* auto - 함수 내 로컬 변수, call 할때마다 값 유지 불가능(초기화는 처음 사용할 떄 한번만) stack에서 생겼다가 return되어 사라짐.
+* manual - malloc, heap에 만들어짐
+* nm hello.o 명령어 : 프로그램이 사용하고 있는 메모리 상태를 보여줌. 주소 없는건 런타임에 정해지는 것들.
+* cc -static hello.c : 코드 복붙 동적x 정적 할당. 대신 메모리 사용 많아짐.
+* global variable은 복잡하게 짓기.
+* 전역변수에 static 변수가 있으면 해당 파일내에서만 사용할 수 있는 변수임.
+
+
+pcc028@ajousw:~/pcc2026/day5$ cat hello.c
+
+이러면 안됨!!!!
+```c
+#include <stdio.h>
+
+static int hello_global_a;
+int global_b;
+
+int f(int * a)
+{
+        int b =10;
+        *a = 100;
+        printf("in f() = %d %d\n", *(a+1), *(a-1));
+        return (*a)*b;
+}
+
+int main()
+{
+        int a=0, b=1;
+        f(&a);
+
+        hello_global_a=1; global_b=2;
+        printf("%d - %d %d\n", a, hello_global_a,global_b);
+        return 0;
+}
+```
+pcc028@ajousw:~/pcc2026/day5$ a.out
+in f() = 1 21882 // 여기서 1은 main의 b값 근데 원래 f함수는 main의 b를 알면 안됨. 보안상 취약점! 
+100 - 1 2
+
+
+
+
+
