@@ -36,27 +36,27 @@ od명령어 : octal dump 리눅스, 유닉스에서 파일 내용을 8진수, 16
 od -x/o/d/c(16,8,10,ascii)
 
 * 내 터미널 확인하는 법
-pcc028@ajousw:/dev$ ls -l std*
-lrwxrwxrwx 1 root root 15 Sep  9 21:55 stderr -> /proc/self/fd/2
-lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdin -> /proc/self/fd/0
-lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdout -> /proc/self/fd/1
-pcc028@ajousw:/dev$ cd /proc/
-pcc028@ajousw:/proc$ ls -l self
-lrwxrwxrwx 1 root root 0 Sep  9 21:55 self -> 1131272
+    pcc028@ajousw:/dev$ ls -l std*
+    lrwxrwxrwx 1 root root 15 Sep  9 21:55 stderr -> /proc/self/fd/2
+    lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdin -> /proc/self/fd/0
+    lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdout -> /proc/self/fd/1
+    pcc028@ajousw:/dev$ cd /proc/
+    pcc028@ajousw:/proc$ ls -l self
+    lrwxrwxrwx 1 root root 0 Sep  9 21:55 self -> 1131272
 
-pcc028@ajousw:/proc/self$ ls -l /dev/stdin
-lrwxrwxrwx 1 root root 15 Sep  9 21:55 /dev/stdin -> /proc/self/fd/0
-pcc028@ajousw:/proc/self$ cd fd
-pcc028@ajousw:/proc/self/fd$ ls -al
-total 0
-dr-x------ 2 pcc028 pcc  0 Jan 14 11:26 .
-dr-xr-xr-x 9 pcc028 pcc  0 Jan 14 11:26 ..
-lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 0 -> /dev/pts/15   //내 터미널에 연결되어있음. 각 터미널에서 디폴트로 0= stdin, 1= stdout, 2= stderr로 정해놓음.
-lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 1 -> /dev/pts/15
-lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 2 -> /dev/pts/15
-lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 255 -> /dev/pts/15
-pcc028@ajousw:/proc/self/fd$ tty          //내 터미널 번호 보기.
-/dev/pts/15
+    pcc028@ajousw:/proc/self$ ls -l /dev/stdin
+    lrwxrwxrwx 1 root root 15 Sep  9 21:55 /dev/stdin -> /proc/self/fd/0
+    pcc028@ajousw:/proc/self$ cd fd
+    pcc028@ajousw:/proc/self/fd$ ls -al
+    total 0
+    dr-x------ 2 pcc028 pcc  0 Jan 14 11:26 .
+    dr-xr-xr-x 9 pcc028 pcc  0 Jan 14 11:26 ..
+    lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 0 -> /dev/pts/15   //내 터미널에 연결되어있음. 각 터미널에서 디폴트로 0= stdin, 1= stdout, 2= stderr로 정해놓음.
+    lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 1 -> /dev/pts/15
+    lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 2 -> /dev/pts/15
+    lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 255 -> /dev/pts/15
+    pcc028@ajousw:/proc/self/fd$ tty          //내 터미널 번호 보기.
+    /dev/pts/15
 
 ### 표준 입출력 리디렉션
 
