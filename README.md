@@ -78,6 +78,9 @@ vs
  3. 2>&1에서 stderr가 stdout과 같은 곳으로 간다 즉 stderr도 out44파일에 출력된다.
  결과적으로 stderr과 stdout이 같은 파일(out44)에 존재한다.
 
+* 다른 컴퓨터의 파일 가져오기:
+cp ~pcc000/pcc2026/day2/test_wc .  // cp 다른 컴퓨터에 위치한 파일경로 .은 내 현재 디렉토리리
+
 ## Day 3
 
 컴파일 순서:
