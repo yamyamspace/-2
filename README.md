@@ -13,6 +13,16 @@ int main()
     return 10;
 }
 ```
+1. git pull
+2. git add *
+3. git commit -m "day1"
+4. git push
+
+c- char 디바이스
+b- 블록 디바이스
+l- 심볼릭 링크
+d- 디렉토리
+p- 파이프
 
 ## Day 3
 
