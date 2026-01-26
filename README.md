@@ -24,6 +24,60 @@ l- 심볼릭 링크
 d- 디렉토리
 p- 파이프
 
+## Day 2
+
+* converting file format:
+unix2dos inputfile out_dos
+unix2mac infile outmac
+
+* 파일 타입 보기
+file 명령어 : 파일의 타입들을 알려줌 ex, c source, ascii text
+od명령어 : octal dump 리눅스, 유닉스에서 파일 내용을 8진수, 16진수, 10진수, 아스키 등 원하는 형태로 보여줌.
+od -x/o/d/c(16,8,10,ascii)
+
+* 내 터미널 확인하는 법
+pcc028@ajousw:/dev$ ls -l std*
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stderr -> /proc/self/fd/2
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdin -> /proc/self/fd/0
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 stdout -> /proc/self/fd/1
+pcc028@ajousw:/dev$ cd /proc/
+pcc028@ajousw:/proc$ ls -l self
+lrwxrwxrwx 1 root root 0 Sep  9 21:55 self -> 1131272
+
+pcc028@ajousw:/proc/self$ ls -l /dev/stdin
+lrwxrwxrwx 1 root root 15 Sep  9 21:55 /dev/stdin -> /proc/self/fd/0
+pcc028@ajousw:/proc/self$ cd fd
+pcc028@ajousw:/proc/self/fd$ ls -al
+total 0
+dr-x------ 2 pcc028 pcc  0 Jan 14 11:26 .
+dr-xr-xr-x 9 pcc028 pcc  0 Jan 14 11:26 ..
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 0 -> /dev/pts/15   //내 터미널에 연결되어있음. 각 터미널에서 디폴트로 0= stdin, 1= stdout, 2= stderr로 정해놓음.
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 1 -> /dev/pts/15
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 2 -> /dev/pts/15
+lrwx------ 1 pcc028 pcc 64 Jan 14 11:26 255 -> /dev/pts/15
+pcc028@ajousw:/proc/self/fd$ tty          //내 터미널 번호 보기.
+/dev/pts/15
+
+### 표준 입출력 리디렉션
+
+* |&는 표준 에러와 표준 출력 모두 파이프로 넘기겠다
+* &>은 stderr와 stdout을 동시에 같은 파일로 리디렉션
+
+맨 앞에 나온 파일하나를 가지고 뒤에서는 1>, 2>해서 맨 앞 파일의 출력 입력을 리디렉션 함.
+예시)
+* a.out < in_linux 2>&1 1> out44 :
+ 순차적으로 처리! stderr는 화면으로 나옴 이미 실행됨.
+ 1. in_linux가 stdin과 연결되어 a.out의 입력(stdin)이 in_linux파일의 내용이 됨.
+ 2. 2>&1에서 2는 stderr을 뜻하고 1은 stdout을 뜻한다 이 작동은 stderr를 stdout의 위치로 보내는 것이며 현재 stdout은 터미널을 향하므로 stderr는 터미널로 출력된다.
+ 3. 1> out44 에서 stdout이 out44라는 파일과 연결되어 out44에 출력이 나온다.  
+ 결과적으로 stderr와 stdout이 도중에 같은 위치로 연결되었지만 stdout이 이후 다른 곳으로 리디렉션되면서 순차성에의해 stderr과 stdout의 위치가 달라졌다.
+vs
+* a.out < in_linux 1> out44 2>&1
+ 1. in_linux의 값을 a.out이 입력으로 받는다.
+ 2. 1> out44 에서 a.out의 stdout이 out44파일로 간다.
+ 3. 2>&1에서 stderr가 stdout과 같은 곳으로 간다 즉 stderr도 out44파일에 출력된다.
+ 결과적으로 stderr과 stdout이 같은 파일(out44)에 존재한다.
+
 ## Day 3
 
 컴파일 순서:
