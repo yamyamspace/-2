@@ -91,8 +91,7 @@ main이 끝나면 stack(아래로 쌓임)과 heap(위로 쌓임) 메모리가 �
 
 a.out은 디스크에 있는 실행파일 = static data로 들어가서 다시 새로 생성할 필요 없음.
 - a.out을 실행할 때마다 static/data 영역도 매번 새로 매핑됨
-다만,
-static/data 영역은
+다만, static/data 영역은
 실행 중에는 계속 유지
 함수 호출/반환과 무관
 
@@ -102,25 +101,31 @@ inline function inline 함수는 성능 최적화를 위해 코드를 호출 위
 
 * recursion은 성능 + 메모리 공간적으로 비싸다. inline으로도 표현 불가능.
 
-echo $?    //첫번째 실행시 직전에 실행한 파일의 출력값이 나옴 두번째 실행시 잘 실행 됐으면 0 하나 이상 없는 파일이면 2
-  cpp 파일명.c에서 #은 작동하지 않는 커멘트
-  cpp 파일명 // 커멘트(주석)가 사라지고, #define값이 바로 변수에 써짐 즉 처리됨.
-  .s파일은 어셈블리 파일
-  모든 함수명은 글로벌 변수다. - 어셈블리 파일로 확인가능
-  as main.s -o main.o //기계어 objectfile로 바뀜.
-  od -x -c // 이진코드 읽기
-  strings main.o // main.o파일에서 사람이 읽을 수 있는 부분만 출력해줌
-  cc -c main.c  //c 소스코드를 바로 main.o로 
-  cc =gcc, cpp, gcc, as를 다 포함
-  main; echo $? // 명령어 두개 한번에 쓰는 법: ; 사용
-  cpp file.c 대신 cc -E file.c를 사용하여 #define과정에서의 문제, 전처리 (문제)를 알 수 있음. 
-  ld file.o -o file 을 사용하기 위해서는 file.s코드에 _start를 명시해야한다.
-ls -o main.o main // main.o파일과 main파일을 long format으로 출력하는데 소유자 (owner)만 보여주고 그룹은 생략,
-ls -l이 젤 많이 보여줌.
+echo $?    //첫번째 실행시 직전에 실행한 파일의 출력값이 나옴 두번째 실행시 잘 실행 됐으면 0 없는 파일이 하나라도 있으면 2(err)
 
-multiple file compile
-프로파일링 하려면 함수를 쪼개야 최적화 가능. 메인함수에 다 쓰면 최적화 불가능.
-cc file1.c file2.c 하면 두개의 파일을 같이 컴파일 할 수 있음.
+cpp 파일명.c에서 #은 작동하지 않는 커멘트
+cpp 파일명 // 커멘트(주석)가 사라지고, #define값이 바로 변수에 써짐 즉 처리됨.
+
+.s파일은 어셈블리 파일
+
+모든 함수명은 글로벌 변수다. - 어셈블리 파일로 확인가능
+
+as main.s -o main.o //기계어 objectfile로 바뀜.
+
+strings main.o // main.o파일에서 사람이 읽을 수 있는 부분만 출력해줌
+cc -c main.c  //c 소스코드를 바로 main.o로 
+cc 명령어는 gcc, cpp, gcc, as를 다 포함
+main; echo $? // 명령어 두개 한번에 쓰는 법: ; 사용
+
+cpp file.c 대신 cc -E file.c를 사용하여 #define과정에서의 문제, 전처리 (문제)를 알 수 있음. 
+
+ld file.o -o file 을 사용하기 위해서는 file.s코드에 _start를 명시해야한다.
+ls -o main.o main // main.o파일과 main파일을 long format으로 출력하는데 소유자 (owner)만 보여주고 그룹은 생략,
+ls -l이 젤 많이 보여줌.(-l옵션이 full 옵션)
+
+* multiple file compile: 
+    프로파일링 하려면 함수를 쪼개야 최적화 가능. 메인함수에 다 쓰면 최적화 불가능.
+    cc file1.c file2.c 하면 두개의 파일을 같이 컴파일 할 수 있음.
 
 ## Day 4
 
