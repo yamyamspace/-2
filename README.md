@@ -336,7 +336,8 @@ int main()
 ```
 위 코드의 문제점: fval이 arr 4를 넘어갔을때 defence code필요
 
-마크로 만들 때 모든 변수에 괄호치기
+* 마크로 만들 때 모든 변수에 괄호치기
+* 계산할때 필요한 타입 캐스팅 하기 명확하게
 
 __STDC_NO_VLA__ //variable length array 지원 안함 크기 지정.
 
@@ -394,3 +395,14 @@ gdb내에서 c코드 보기: list명령어
 gdb 종료: quit / ctl+d
 함수 종료 직전에 멈추려면 줄 번호 직접 지정 ex) b num
 finish 명령은 현재 함수 끝까지 실행하고 호출한 함수로 돌아갈때 유용.
+
+## 프로파일링(pg, gprof)
+순서:
+1. cc -g -pg rgba.c
+2. a.out
+3. gprof a.out gmon.out 
+
+실습
+이미지를 만들어서 이미지에디터를 256*256으로 만들어서 png로 세이브하고 unsinged int 256*256으로 담아주는 코드 0.5를 곱한 후(50% 어둡게) png파일로 세이브 하는 코드
+
+
