@@ -358,4 +358,39 @@ Program received signal SIGSEGV, Segmentation fault.
     0  0x000000000000001f in ?? ()
     1  0x000055555555521d in fcall (f=0x1f, a=200, b=300) at debug.c:12
     2  0x00005555555552c6 in main () at debug.c:24
-함수의 포인터를 쓰면 어떤 함수인지 모른다 디버깅하기 어려움
+* 함수의 포인터를 쓰면 어떤 함수인지 모른다 디버깅하기 어려움
+
+gdb = GNU Debugger
+프로그램을 한 줄씩 실행하고, 메모리를 들여다보고, 죽는 지점을 정확히 잡아내는 도구
+gdb 쓰기 전에 꼭 해야 할 것:
+컴파일 할 때 -g옵션 쓰기
+ex) gcc -g test.c -o0 test //최적화 없이 컴파일 -o0해야 gdb에서 지역변수 확인이 확실히 가능. 아니면 컴파일러가 걍 사용하고 정보 삭제해버릴수 있음
+
+gdb시작하는 법:
+gdb ./test 들어가면 (gdb)라는 프롬프트가 뜸 여기서 gdb명령어 치기
+
+브레이크 포인트는 관찰 시작 시점ㅈ 표시, 실제 실행은 run -> breakpoint에서 멈춘 뒤 이후에 step/ print로 한줄씩 관찰하면서 오류 찾
+gdb명령어:
+1. b : 브레이크 포인트 걸기 ex) b main
+2. run : 실행 , breakpoint에서 멈춤
+3. 한줄 실행 1. next : 함수 안으로 안들어감
+            2. step : 함수 안으로 들어감
+4. p : 값 보기 ex) p p 또는 p *p 또는 p &p 처럼 사용가능 p == print
+5. continue : 다음 breakpoint까지 진행
+포인터 디버깅 핵심 기능:
+1. 메모리 직접보기:
+  x/4x p // 4개를 hex로 examine
+  x/4c p // 4개를 char로 examine
+
+2. segfault 났을때:
+  그냥 gdb로 실행하면: run
+  터지면: bt -> (backtrace) 어느 함수 어느 줄에서 터졌는지 바로 나옴.
+
+breakpoint삭제하는 법: 
+1. info breakpoints를 쳐서 num을 확인한  delete num 하면 됨.
+
+gdb내에서 c코드 보기: list명령어
+
+gdb 종료: quit / ctl+d
+함수 종료 직전에 멈추려면 줄 번호 직접 지정 ex) b num
+finish 명령은 현재 함수 끝까지 실행하고 호출한 함수로 돌아갈때 유용.
