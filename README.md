@@ -306,3 +306,56 @@ int main()
 답이 310인 이유: 처음 l++에서 계산시 0->1반영 안됨. 10*l++에서 1*10, l=2 아직 계산에 반영 안됨. ++l=3 3*100 따라서 다 더하면 310 왼쪽에서부터 순서대로 계산.
 
 main함수에서 int * 10개 선언, fmalloc함수에 파라미터로 넘김. 주소에 malloc으로 넣어서 끝냄. 그리고 그 malloc에 데이터 쓰기.
+
+# Day 7
+## pointer of function 
+* void (*foo)() : 함수이름에 괄호치기
+ Compare
+○ int *f4(); /* function return integer pointer
+○ int (*f5)(); /* function pointer return integer
+○ int* (*f6)(); /* function pointer return integer pointer
+○ rearrange 
+int *f4(); → int*  f4();
+사칙연산
+```c
+#include <stdio.h>
+
+int add(int a, int b){ return a+b; }
+int sub(int a, int b){ return a-b; }
+int div(int a, int b){ return b==0?0:a/b; }
+int mul(int a, int b){ return a*b; }
+
+int main()
+{
+        const int (*f[4])(int, int) = {add, sub, mul, div} ;
+        int fval=0, a=0,b=0;
+        scanf("%d %d %d", &fval, &a,&b);
+        //fval 0: add....
+        printf("%d\n", f[fval](a,b));
+}
+```
+위 코드의 문제점: fval이 arr 4를 넘어갔을때 defence code필요
+
+마크로 만들 때 모든 변수에 괄호치기
+
+__STDC_NO_VLA__ //variable length array 지원 안함 크기 지정.
+
+int* ptr1, ptr2; == int *ptr1, ptr2
+int  *ptr1, *ptr2; 둘이 다름
+
+typedef int* PINT; // typedef는 , 앞뒤로 다 적용됨.
+PINT ptr1, ptr2 == int *ptr1, *ptr2
+
+데이터 타입 바꾸는것 = aliasing 
+
+# gdb
+    * cd, list (+ 함수명){소스코드 보여줌}, run, next, continue, print, b{브레이크 포인트트}, backtrace
+core dumped : 프로그램이 치명적인 에러로 죽으면서 그 순간의 메모리 상태를 core파일로 저장
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000000000000001f in ?? ()
+(gdb) where
+    0  0x000000000000001f in ?? ()
+    1  0x000055555555521d in fcall (f=0x1f, a=200, b=300) at debug.c:12
+    2  0x00005555555552c6 in main () at debug.c:24
+함수의 포인터를 쓰면 어떤 함수인지 모른다 디버깅하기 어려움
