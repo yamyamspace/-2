@@ -88,6 +88,15 @@ cp ~pcc000/pcc2026/day2/test_wc .  // cp 다른 컴퓨터에 위치한 파일경
     2. compiler :   include header, macro, .i
     3. assembly :   .s
     4. linker :  .o , .a
+    cpp hello.c > hello.i : c preprocessor , #define값들 인라인으로 처리
+    gcc -S hello.i: 어셈블리 코드
+    as hello.i -o hello.o : objectfile로 변환.
+
+유용한 기능: 
+    file - determine file type
+    nm - list symbols from object files
+    ldd - print shared object depentancies
+    objdump - disassembler of object code
 
 * function call memory
 main이 끝나면 stack(아래로 쌓임)과 heap(위로 쌓임) 메모리가 반환된다.
@@ -405,4 +414,53 @@ finish 명령은 현재 함수 끝까지 실행하고 호출한 함수로 돌아
 실습
 이미지를 만들어서 이미지에디터를 256*256으로 만들어서 png로 세이브하고 unsinged int 256*256으로 담아주는 코드 0.5를 곱한 후(50% 어둡게) png파일로 세이브 하는 코드
 
+# Day8
+* 속도 때문에 숫자 뒤에 f꼭 붙이기 안붙이면 double이 되는데 정밀도는 올라가지만 그만큼 느려짐(약 8배). 
+```c
+for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
+```
+* Makefile 만들기
+ Makefile은 수많은 소스 파일을 하나하나 직접 컴파일하는 번거로움을 해결해주는 빌드 자동화 도구. Makefile을 만든 후에는 make만 치면 컴파일 됨. 
+ 핵심원리: 타임 스탬프 비교. 재료(dependency)가 결과물(target)보다 더 최신인가? ex) 03_main.o 와 03_main.c의 수정시간 time stamp비교하여 어떤 파일이 컴파일이 필요한지 알아냄. 
+ 파일이 수정되지 않았지만 컴파일 하고싶을때 "touch 파일명"을 한 후 make하면 컴파일됨.
 
+ ```c
+ # 1. 컴파일러 설정
+CC = gcc
+TARGET = my_program
+
+# 2. 소스 및 오브젝트 파일
+SRCS = 03_main.c 03_func.c
+OBJS = $(SRCS:.c=.o)
+
+# 3. 디버그 모드 설정 (기본값: 1 - 켬)
+DEBUG ?= 1
+
+ifeq ($(DEBUG), 1)
+    # 디버그 모드: -g(디버깅 정보), -DDEBUG_MODE(매크로 정의)
+    CFLAGS = -g -DDEBUG_MODE -Wall -Wextra
+    MODE_MSG = "Debug mode (with -g and -DDEBUG_MODE)"
+else
+    # 릴리즈 모드: -O2(최적화), 매크로 제외
+    CFLAGS = -O2 -Wall -Wextra
+    MODE_MSG = "Release mode (optimized)"
+endif
+
+# 4. 빌드 규칙
+all: 
+	@echo "Building in $(MODE_MSG)..."
+	$(MAKE) $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+# 5. 의존성 생성 (gccmakedep)
+depend:
+	gccmakedep $(SRCS)
+
+# 6. 정리
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+# DO NOT DELETE
+```
