@@ -1,0 +1,30 @@
+=== no_mutex ===
+Three thread started
+Three thread i1 finished
+Three thread i2 finished
+Three thread f finished
+0 -  7667969
+real 3.40
+user 8.15
+sys 0.00
+
+=== mutex ===
+Three thread started
+Three thread i1 finished
+Three thread i2 finished
+Three thread f finished
+0 -  7680000
+real 3.57
+user 8.62
+sys 0.06
+
+=== sequential ===
+Three thread started
+Three thread i1 finished
+Three thread i2 finished
+Three thread f finished
+0 -  7680000
+real 7.66
+user 7.66
+sys 0.00
+
