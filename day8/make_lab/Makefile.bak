@@ -1,0 +1,26 @@
+# 1. Ç·α׷¥ ¼³d
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+TARGET = my_program
+
+# 2. ¼ҽº ¹×¿:êƮ ÆÀ ¸®½ºƮ
+SRCS = 03_main.c 03_func.c
+OBJS = $(SRCS:.c=.o)
+
+# 3. ±⺻ ºô±Ô¢
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+# 4. Àx¼º »ýĢ (gccmakedep »ç)
+depend:
+	gccmakedep $(SRCS)
+
+# 5. d¸® ±Ô¢
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+# À ¶ó¾Ʒ¡¿¡ gccmakedepÀ Àx¼º dº¸¸¦ Àµ¿8·ÎÃ°¡Ç´ϴÙ
+# DO NOT DELETE
+

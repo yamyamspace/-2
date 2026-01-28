@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/course/pcc/pcc028/pcc2026/day8/cmake_lab/03_func.c
+03_func.h
+/home/course/pcc/pcc028/pcc2026/day8/cmake_lab/03_func.h
+
+/home/course/pcc/pcc028/pcc2026/day8/cmake_lab/03_func.h
+
+/home/course/pcc/pcc028/pcc2026/day8/cmake_lab/03_main.c
+stdio.h
+-
+03_func.h
+/home/course/pcc/pcc028/pcc2026/day8/cmake_lab/03_func.h
+png.h
+-
+

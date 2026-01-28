@@ -1,0 +1,40 @@
+rgba_g.
+
+real	0m1.587s
+user	0m1.583s
+sys	0m0.004s
+rgba_gpg.
+
+real	0m1.564s
+user	0m1.564s
+sys	0m0.000s
+rgba_O0.
+
+real	0m1.585s
+user	0m1.585s
+sys	0m0.000s
+rgba_O1.
+
+real	0m0.220s
+user	0m0.220s
+sys	0m0.000s
+rgba_O2.
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+rgba_O3.
+
+real	0m0.000s
+user	0m0.001s
+sys	0m0.000s
+rgba_Og.
+
+real	0m0.311s
+user	0m0.311s
+sys	0m0.000s
+rgba_Os.
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s

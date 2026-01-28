@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -g   CMakeFiles/my_program.dir/03_func.c.o CMakeFiles/my_program.dir/03_main.c.o  -o my_program 

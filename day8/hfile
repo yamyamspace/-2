@@ -1,0 +1,1000 @@
+   25  cd pcc2026/
+   26  ls
+   27  mkdir day1
+   28  cd day1
+   29  ls -al
+   30  vi hello.c
+   31  cat hello.c 
+   32  cc hello.c 
+   33  ls -al
+   34  ./a.out
+   35  cd ../..
+   36  cd ../
+   37  ls -l **/a.out
+   38  shopt
+   39  shopt globstar
+   40  shopt -s globstar
+   41  ls -l **/a.out
+   42  which cat
+   43  which cc
+   44  cd /usr/bin
+   45  ls -l
+   46  ls -l cc
+   47  cd /etc/alternatives/
+   48  ls -l cc
+   49  cd /usr/bin
+   50  ls -l gcc
+   51  ls -l gcc-9
+   52  ls -l x86_64-linux-gnu-gcc-9 
+   53  ls -l *cc*
+   54  man cc 
+   55  man cc
+   56  cd
+   57  cd pcc2026/day1/
+   58  ls -la
+   59  file *
+   60  cp hello.c hello.java
+   61  ls -la
+   62  file *
+   63  man file
+   64  vi hello.java
+   65  file *
+   66  strip a.out
+   67  file a.out
+   68  ls -la
+   69  cc -static hello.c
+   70  file a.out
+   71  ls -al
+   72  cc -static -m32 hello.c
+   73  file a.out
+   74  ls -al
+   75  cp hello.c hellostdio.c
+   76  vi hellostdio.c 
+   77  clear
+   78  cc -o outtest hellostdio.c 
+   79  ls -al
+   80  ./outtest 
+   81  cd /usr/include/
+   82  ls
+   83  vi stdio.h
+   84  cd ~/pcc2026/day1/
+   85  vi hello.c
+   86  cc hello.c
+   87  a.out
+   88  clear
+   89  a.out
+   90  wc /usr/include/stdio.h 
+   91  vi hello.c 
+   92  cc hello2.c 
+   93  cc hello.c
+   94  date
+   95  time cc hello.c
+   96  time cc hello2.c
+   97  time cc hello.c
+   98  ls -al
+   99  cat hellostdio.c 
+  100  ls a.out
+  101  ls b.out
+  102  outtest 
+  103  vi infile
+  104  cat infile 
+  105  ls -al
+  106  outtest <0 infile 
+  107  outtest 0< infile 
+  108  outtest 0< infile 1> stdoutfile
+  109  cat stdoutfile 
+  110  outtest 0< infile 1> stdoutfile 2> errorfile
+  111  cat errorfile 
+  112  outtest >& allfile
+  113  cat allfile 
+  114  cat hello.c
+  115  cat hellostdio.c
+  116  cat allfile 
+  117  git pull
+  118  git add *
+  119  git commit -m "day1"
+  120  git push
+  121  ps -l
+  122  echo $A
+  123  exit
+  124  cd pcc2026/
+  125  ls -al
+  126  git pull
+  127  mkdir day2
+  128  cd ../../
+  129  shopt -s starglob 
+  130  shopt -s globstar 
+  131  ls -al **/day2
+  132  ls -al **/day2 > ~/0114_attend.txt
+  133  cd
+  134  ls -al
+  135  cd pcc2026
+  136  ls -al
+  137  cd day2/
+  138  cp ../day1/hellostdio.c .
+  139  cc hellostdio.c 
+  140  cat hellostdio.c 
+  141  echo 999
+  142  echo -n 999
+  143  echo 999 > inputfile
+  144  echo -n 999 infile2
+  145  ls -al
+  146  echo -n 999 > infile2
+  147  ls -al
+  148  wc wc in*
+  149  hostname
+  150  dos2unix
+  151  dos2mac
+  152  ls -al
+  153  file in*
+  154  unix2dos inputfile input_dos
+  155  unix2mac inputfile input_mac
+  156  ls -al
+  157  unix2mac inputfile > input_mac
+  158  unix2dos inputfile > input_dos
+  159  ls -al
+  160  file *
+  161  dos2unix -n inputfile in_linux
+  162  cp inputfile in_dos
+  163  unix2mac -n in_linux in_mac
+  164  ls -al
+  165  rm infile2 input_dos input_mac inputfile
+  166  ls -al
+  167  file *
+  168  od -x in_linux
+  169  od -x -t in_linux
+  170  od -h
+  171  man od
+  172  od in_linux 
+  173  od -x in_linux 
+  174  od -x --endian big in_linux 
+  175  od -x --endian big in_dos
+  176  od -x --endian big in_mac
+  177  ls -al
+  178  echo -n 999 > in_no
+  179  a.out
+  180  a.out < in_linux 
+  181  a.out < in_dos
+  182  a.out < in_mac
+  183  a.out < in_no
+  184  a.out 0< in_no
+  185  a.out 0< in_no 1> out1
+  186  cat out1
+  187  a.out 0< in_no 1> out1 2> err1
+  188  cd /dev
+  189  ls -al
+  190  ls -l std*
+  191  cd /proc/
+  192  ls -l self
+  193  ps
+  194  ls -l self
+  195  ps -ef
+  196  ls -l self
+  197  ps -ae | grep 1131666
+  198  cd self
+  199  ls -al
+  200  ls -l /dev/stdin 
+  201  cd fd
+  202  ls -al
+  203  tty
+  204  echo aaa 255> /tmp/l
+  205  echo aaa 1> /tmp/l
+  206  cd
+  207  cd pcc2026/day2
+  208  ls -al
+  209  ls -l in_* 
+  210  ls -l in_* out_*
+  211  ls -al
+  212  ls -l in_dos in_linux out_dos out_linux | wc -l
+  213  ls -l in_dos in_linux out_dos out_linux 2> tmperr ; wc -l tmperr
+  214  ls -l in_dos in_linux out_dos out_linux 1> /dev/null 2> tmperr ; wc -l tmperr
+  215  ls -l in_dos in_linux out_dos out_linux |& wc -l 
+  216  a.out < in_linux 2>&1 1> out44
+  217  a.out < in_linux 1> out44  2>&1
+  218  cat out44
+  219  a.out
+  220  0
+  221  a.out
+  222  ls
+  223  vi scan.c
+  224  cc scan.c 
+  225  a.out
+  226  a.out < in_linux 
+  227  echo AAA > err_linux
+  228  a.out < err_linux 
+  229  echo 999 >> err_linux 
+  230  a.out < err_linux 
+  231  cat hellostdio.c 
+  232  vi scan.c 
+  233  cc scan.c 
+  234  a.out
+  235  ls
+  236  cp hellostdio.c buffer.c
+  237  vi buffer.c 
+  238  cc -o buffer buffer.c 
+  239  buffer 
+  240  buffer <<<100
+  241  buffer <<<100 >& allout.txt
+  242  cat allout.txt 
+  243  vi buffer.c
+  244  cc -o buffer buffer.c 
+  245  buffer <<<100 >& allout.txt
+  246  cat allout.txt 
+  247  cat buffer
+  248  cat buffer.c
+  249  clear
+  250  cat buffer.c
+  251  man setvbuf
+  252  vi buffer.c
+  253  cc -o buffer buffer.c 
+  254  buffer <<<100 >& allout.txt
+  255  cat buffer.c
+  256  cat allout.txt 
+  257  vi buffer.c
+  258  cc -o buffer buffer.c 
+  259  vi buffer.c
+  260  cc -o buffer buffer.c 
+  261  cc -Wall -o buffer buffer.c
+  262  vi buffer.c
+  263  cc -Wall -o buffer buffer.c
+  264  buffer
+  265  vi buffer.c
+  266  cc -Wall -o buffer buffer.c
+  267  buffer
+  268  vi buffer.c
+  269  cc -Wall -o buffer buffer.c
+  270  cat allout.txt 
+  271  cat buffer.c
+  272  cc -Wall -o buffer buffer.c
+  273  buffer
+  274  vi buffer.c
+  275  cc -Wall -o buffer buffer.c
+  276  buffer
+  277  vi buffer.c
+  278  cc -Wall -o buffer buffer.c
+  279  buffer
+  280  vi buffer.c
+  281  man cat
+  282  cat > testfile
+  283  cat testfile 
+  284  buffer < testfile 
+  285  vi buffer.c
+  286  cc -Wall -o buffer buffer.c
+  287  buffer < testfile 
+  288  buffer < testfile 2> testerr
+  289  cat testerr 
+  290  A=100
+  291  echo $A
+  292  echo A
+  293  ps ; ( ps ; echo $A ; ps )
+  294  bash
+  295  ps -l
+  296  echo $A
+  297  { echo 1; ps ; sleep 1 ;} | { echo 2; ps ; sleep 1 ;} | { echo 3; ps ;}
+  298  { echo 1; ps -l ; sleep 1 ;} | { echo 2; ps -l ; sleep 1 ;} | { echo 3; ps -l;}
+  299  { sleep 1; echo 1; ps -l ;} | { sleep 3; echo 2; ps -l ;} | { sleep3; echo 3; ps -l;}
+  300  { sleep 1; echo 1; ps -l ;} | { sleep 3; echo 2; ps -l ;} | { sleep 3; echo 3; ps -l;}
+  301  { sleep 1; echo 1; ps -l ;} | { sleep 3; echo 2; ps -l ;} | { sleep 3; echo 6; ps -l;}
+  302  mkfifo pipe
+  303  ls -al
+  304  chmod 777 pipe
+  305  cat pipe
+  306  man system
+  307  date
+  308  vi sys.c
+  309  cc sys.c 
+  310  a.out
+  311  vi getdate.c
+  312  cc getdate.c 
+  313  a.out
+  314  date
+  315  ls | wc
+  316  cat test_wc
+  317  cat > test_wc
+  318  cp ~pcc000/pcc2026/day2/test_wc .
+  319  wc test_wc
+  320  git add *
+  321  git commit -m "day2"
+  322  git push
+  323  ls
+  324  cd ../
+  325  ls -al
+  326  cd pcc030/pcc2026/day2
+  327  ls
+  328  ls -la
+  329  ./a.out < test_wc
+  330  cd ..
+  331  who
+  332  mkdir day3
+  333  cd
+  334  cd pcc2026/
+  335  mkdir day3
+  336  ls -al
+  337  cd day3
+  338  which vi
+  339  ls -l `which vi`
+  340  ls -l /etc/alternatives/vi
+  341  w
+  342  pcc001   pts/17       2026-01-15 10:01 (175.195.197.183)
+  343  pcc023   pts/18       2026-01-15 10:02 (175.195.197.185)
+  344  pcc016   pts/19       2026-01-15 10:02 (175.195.197.184)
+  345  pcc007   pts/20       2026-01-15 10:07 (175.195.197.184)
+  346  vi main.c
+  347  cc main.c 
+  348  a.out
+  349  echo $?
+  350  cpp main.c
+  351  cpp main.c > main.i
+  352  cc -S main.i
+  353  ls -al
+  354  cat main.s
+  355  as main.s -o main.o
+  356  ls -al
+  357  cat main.o
+  358  od -x -c main.o
+  359  strings main.o
+  360  ld main.o -o main
+  361  ls -al
+  362  main
+  363  cc -c main.c
+  364  ls -l main.o
+  365  cc -o main main.o
+  366  ls -l main
+  367  main \ echo $?
+  368  main ; echo $?
+  369  vi main.c
+  370  cc -E main.c
+  371  pcc001   pts/17       2026-01-15 10:01 (175.195.197.183)
+  372  pcc023   pts/18       2026-01-15 10:02 (175.195.197.185)
+  373  cc -E main.c
+  374  vi main.c
+  375  cc -E main.c
+  376  vi 03_func.h
+  377  vi 03_func.c
+  378  file 03*
+  379  cat 03_func.c
+  380  vi 03_func.c
+  381  cc -c 03_func.c
+  382  vi 03_func.c
+  383  vi 03_main.c
+  384  cc 03_main.c 03_func.c
+  385  a.out
+  386  nm a.out
+  387  strip a.out
+  388  nm a.out
+  389  cc 03_main.c 03_func.c
+  390  ldd a.out
+  391  objdump a.out
+  392  objdump -a a.out
+  393  cat 03*
+  394  vi main.c
+  395  vi 03_main.c
+  396  cc 03_func.c 03_main.c
+  397  cc -c 03_func.c
+  398  ls -la
+  399  a.out
+  400  vi 03_main.c
+  401  cc 03_func.o main.c
+  402  a.out
+  403  cc 03_func.o 03_main.c
+  404  a.out
+  405  vi pointer.c
+  406  cc -Wall pointer.c
+  407  vi pointer.c
+  408  cc -Wall pointer.c
+  409  a.out
+  410  1V
+  411  vi pointer.c
+  412  cc -Wall pointer.c
+  413  a.out
+  414  vi pointer.c
+  415  cc -Wall pointer.c
+  416  a.out
+  417  nm a.out
+  418  #define DF(a) ((a)*(a))
+  419  extern int func1(int x);
+  420  nm a.out
+  421  ls
+  422  vi pointer.c
+  423  cc pointer.c 
+  424  nm a.out
+  425  a.out
+  426  tobin.c
+  427  vi tobin.c
+  428  cc tobin.c
+  429  a.out
+  430  vi tobin.c
+  431  cc tobin.c
+  432  a.out
+  433  vi tobin.c
+  434  cc tobin.c
+  435  vi tobin.c
+  436  cc tobin.c
+  437  a.out
+  438  python
+  439  vi tobin.c
+  440  a.out
+  441  vi tobin.c
+  442  cc tobin2.c
+  443  a.out
+  444  vi tobin.c
+  445  cc tobin.c
+  446  a.out
+  447  vi tobin.c
+  448  cd pcc2026/
+  449  ls -al
+  450  cd day1
+  451  ls -al
+  452  cc hello.c
+  453  ldd a.out
+  454  cc hello.c -o b.out
+  455  ldd b.out
+  456  cc -static hello.c -o b.out
+  457  ldd b.out
+  458  cd ..
+  459  mkdir tmp
+  460  vi test.c
+  461  cpp test.c
+  462  vi test.c
+  463  cpp test.c
+  464  vi test.c
+  465  cpp test.c
+  466  vi test.c
+  467  cd pcc2026/
+  468  mkdir day4
+  469  cpptest.c
+  470  vi cpptest.c
+  471  cpp cpptest.c 
+  472  vi cpptest.c
+  473  cpp cpptest.c 
+  474  vi cpptest.c
+  475  cpp cpptest.c 
+  476  vi cpptest.c
+  477  cpp cpptest.c 
+  478  vi cpptest.c
+  479  cpp cpptest.c 
+  480  vi cpptest.c
+  481  cpp cpptest.c 
+  482  vi cpptest.c
+  483  cpp cpptest.c 
+  484  vi cpptest.c
+  485  cpp cpptest.c 
+  486  vi cpptest.c
+  487  cpp cpptest.c 
+  488  vi cpptest.c
+  489  cpp cpptest.c 
+  490  vi cpptest.c
+  491  cpp cpptest.c 
+  492  vi cpptest.c
+  493  cpp cpptest.c 
+  494  cpp -DAAA=300
+  495  cpp -DAAA=300 cpptest.c 
+  496  cpp -DAAA=200 cpptest.c 
+  497  cpp -DAAA=100 cpptest.c 
+  498  cat cpptest.c 
+  499  cpp -DAAA=500 cpptest.c 
+  500  cpp -DAAA=0 cpptest.c 
+  501  ls
+  502  mv cpptest.c day4
+  503  cd day4/
+  504  cp ../day1/hello.c
+  505  cp ../day1/hello.c .
+  506  vi hello.c
+  507  cpp hello.c 
+  508  cpp -D__MYDEBUG_ hello.c 
+  509  cat hello.c 
+  510  cpp -D__MY_DEBUG hello.c 
+  511  cat hello.c 
+  512  vi hello.c 
+  513  cpp -D__MY_DEBUG hello.c 
+  514  cpp -U__MY_DEBUG hello.c 
+  515  man cpp
+  516  cpp -D__MY_DEBUG -U__MY_DEBUG hello.c 
+  517  vi st.c
+  518  cpp st.c 
+  519  vi st.c
+  520  cpp st.c 
+  521  vi st.c
+  522  cpp st.c 
+  523  vi st.c
+  524  cpp st.c 
+  525  vi st.c
+  526  cpp st.c 
+  527  cat st.c 
+  528  vi st.c
+  529  cpp st.c 
+  530  vi st.c
+  531  cpp st.c 
+  532  man trigraphs
+  533  man cpp
+  534  vi st.c
+  535  cpp st.c 
+  536  vi st.c
+  537  cpp st.c 
+  538  cat st.c 
+  539  vi st.c
+  540  cpp st.c 
+  541  vi st.c
+  542  cpp st.c 
+  543  vi st.c
+  544  cpp st.c 
+  545  vi hello.c 
+  546  cpp hello.c 
+  547  cc hello.c 
+  548  vi hello.c 
+  549  cc hello.c 
+  550  vi hello.c 
+  551  cc hello.c 
+  552  a.out
+  553  cpp hello.c 
+  554  cat hello.c 
+  555  a.out
+  556  vi type_size.c
+  557  cc -m64 type_size.c -o size64
+  558  size64
+  559  cp ../day3/tobin.c
+  560  cp ../day3/tobin.c .
+  561  vi tobin.c 
+  562  cc tobin.c 
+  563  a.out
+  564  vi tobin.c 
+  565  cc tobin.c 
+  566  a.out
+  567  vi tobin.c 
+  568  cc tobin.c 
+  569  a.out
+  570  vi tobin.c 
+  571  cc tobin.c 
+  572  a.out
+  573  vi tobin.c 
+  574  cc tobin.c 
+  575  a.out
+  576  vi tobin.c 
+  577  cc tobin.c 
+  578  a.out
+  579  python
+  580  cd pcc2026/
+  581  mkdir day5
+  582  vi float_xn.c
+  583  cc float_xn.c
+  584  a.out
+  585  vi float_xn.c
+  586  cc float_xn.c
+  587  vi float_xn.c
+  588  cc float_xn.c
+  589  vi float_xn.c
+  590  cc float_xn.c
+  591  cc -Wall float_xn.c
+  592  vi float_xn.c
+  593  cc -Wall float_xn.c
+  594  clear
+  595  cc -Wall float_xn.c
+  596  vi float_xn.c
+  597  python
+  598  vi float_xn.c
+  599  vi hello.c
+  600  cc -c hello.c
+  601  nm hello.c
+  602  nm hello.o
+  603  vi hello.c
+  604  cc hello.c
+  605  nm a.out
+  606  cc -static hello.c
+  607  nm a.out
+  608  LC_LOCALE
+  609  LC_LOCALE=ko.kr.euc
+  610  date
+  611  locale
+  612  vi hello.c
+  613  cc -static hello.c
+  614  a.out
+  615  cc -static hello.c -Wall
+  616  vi hello.c
+  617  cc -c hello.c
+  618  nm hello.o
+  619  vi hello.c
+  620  cc -c hello.c
+  621  vi hello.c
+  622  cc -c hello.c
+  623  cc hello.c
+  624  a.out
+  625  vi hello.c
+  626  cc hello.c
+  627  a.out
+  628  vi hello.c
+  629  cc hello.c
+  630  a.ut
+  631  a.out
+  632  ls
+  633  mv *.c day5
+  634  cd day5
+  635  ls -al
+  636  mv ../a.out .
+  637  vi pointer.c
+  638  cc pointer.c
+  639  vi pointer.c
+  640  cc pointer.c
+  641  a.out
+  642  vi pointer.c
+  643  cc pointer.c
+  644  a.out
+  645  cat pointer.c 
+  646  vi pointer.c
+  647  cc pointer.c
+  648  vi pointer.c
+  649  cc pointer.c
+  650  a.out
+  651  vi pointer.c
+  652  cc pointer.c
+  653  a.out
+  654  vi pointer.c
+  655  python
+  656  vi pointer.c
+  657  cp pointer.c const.c
+  658  vi const.c 
+  659  cc const.c
+  660  vi const.c 
+  661  cc const.c
+  662  vi const.c 
+  663  cc const.c
+  664  vi const.c 
+  665  cc const.c
+  666  vi const.c 
+  667  cc const.c
+  668  vi const.c 
+  669  cc const.c
+  670  a.out
+  671  vi const.c 
+  672  cc const.c
+  673  vi const.c 
+  674  cc const.c
+  675  vi const.c 
+  676  cc const.c
+  677  a.out
+  678  vi const.c 
+  679  vi array.c
+  680  cc array.c
+  681  a.out
+  682  vi array.c
+  683  cc array.c
+  684  a.out
+  685  vi array.c
+  686  cc array.c
+  687  a.out
+  688  vi array.c
+  689  cc array.c
+  690  vi array.c
+  691  cc array.c
+  692  a.out
+  693  vi array.c
+  694  cc array.c
+  695  VI array.c 
+  696  cc array.c 
+  697  a.out
+  698  vi array.c
+  699  cc array.c 
+  700  a.out
+  701  vi array.c
+  702  vi fmalloc.c
+  703  cc fmalloc.c 
+  704  vi fmalloc.c
+  705  cc fmalloc.c 
+  706  a.out
+  707  vi fmalloc.c
+  708  cc fmalloc.c 
+  709  a.out
+  710  vi fmalloc.c
+  711  cc fmalloc.c 
+  712  a.out
+  713  vi fmalloc.c
+  714  cc fmalloc.c 
+  715  a.out
+  716  vi fmalloc.c
+  717  cc fmalloc.c 
+  718  vi fmalloc.c
+  719  cc fmalloc.c 
+  720  a.out
+  721  vi fmalloc.c
+  722  cc fmalloc.c 
+  723  a.out
+  724  vi fmalloc.c
+  725  cc -g fmalloc.c 
+  726  gdb a.out
+  727  vi fmalloc.c 
+  728  cc -g fmalloc.c 
+  729  a.out
+  730  vi fmalloc.c 
+  731  cc -g fmalloc.c 
+  732  vi fmalloc.c 
+  733  cc -g fmalloc.c 
+  734  a.out
+  735  vi fmalloc.c 
+  736  cc -g fmalloc.c 
+  737  a.out
+  738  vi fmalloc.c 
+  739  cc -g fmalloc.c 
+  740  a.out
+  741  vi fmalloc.c 
+  742  cc -g fmalloc.c 
+  743  vi fmalloc.c 
+  744  cc -g fmalloc.c 
+  745  vi fmalloc.c 
+  746  cc -g fmalloc.c 
+  747  a.out
+  748  vi fmalloc.c 
+  749  cc -g fmalloc.c 
+  750  a.out
+  751  vi fmalloc.c 
+  752  ls -al
+  753  cd
+  754  pwd
+  755  cd pcc2026/
+  756  ls -al
+  757  mkdir day7
+  758  cd day7
+  759  vi rgba.c
+  760  cc rgba.c 
+  761  a.out
+  762  ./a.out
+  763  ls -al
+  764  vi rgba.c
+  765  cc rgba.c 
+  766  vi rgba.c
+  767  cc rgba.c 
+  768  vi rgba.c
+  769  cc rgba.c 
+  770  a.out
+  771  ./a.out
+  772  vi rgba.c
+  773  cc rgba.c 
+  774  ./a.out
+  775  vi rgba.c
+  776  cc rgba.c 
+  777  a.out
+  778  ./a.out
+  779  vi rgba.c
+  780  cc rgba.c 
+  781  ./a.out
+  782  vi rgba.c
+  783  cc rgba.c 
+  784  ./a.out
+  785  vi rgba.c
+  786  cc rgba.c 
+  787  ./a.out
+  788  vi rgba.c
+  789  cc rgba.c 
+  790  ./a.out
+  791  vi rgba.c
+  792  cc rgba.c 
+  793  ./a.out
+  794  vi rgba.c
+  795  cc rgba.c 
+  796  vi rgba.c
+  797  cc rgba.c 
+  798  a.out
+  799  ./a.out
+  800  vi rgba.c
+  801  python
+  802  ./a.out
+  803  vi rgba.c
+  804  ./a.out
+  805  cc rgba.c 
+  806  ./a.out
+  807  vi rgba.c
+  808  cc rgba.c 
+  809  ./a.out
+  810  vi rgba.c
+  811  cc rgba.c 
+  812  a.out
+  813  ./a.out
+  814  vi rgba.c
+  815  cc rgba.c 
+  816  vi rgba.c
+  817  cc rgba.c 
+  818  vi rgba.c
+  819  cc rgba.c 
+  820  vi rgba.c
+  821  cc rgba.c 
+  822  ./a.out
+  823  vi rgba.c
+  824  cc rgba.c 
+  825  a.out
+  826  ./a.out
+  827  ls -al
+  828  vi rgba.c 
+  829  cc rgba.c 
+  830  vi rgba.c 
+  831  cc rgba.c 
+  832  ./a.out
+  833  vi rgba.c 
+  834  cc rgba.c 
+  835  ./a.out
+  836  vi rgba.c 
+  837  cc rgba.c 
+  838  ./a.out
+  839  bc 
+  840  vi rgba.c 
+  841  cc rgba.c 
+  842  ./a.out
+  843  vi rgba.c 
+  844  cc rgba.c 
+  845  ./a.out
+  846  vi rgba.c 
+  847  cc rgba.c 
+  848  ./a.out
+  849  vi rgba.c 
+  850  cc rgba.c 
+  851  ./a.out
+  852  vi rgba.c 
+  853  cc rgba.c 
+  854  ~./a.out
+  855  ./a.out
+  856  vi rgba.c 
+  857  cc rgba.c 
+  858  ./a.out
+  859  vi rgba.c 
+  860  cc rgba.c 
+  861  ./a.out
+  862  cd pcc2026/
+  863  cd day7
+  864  ls -al
+  865  vi fpointer.c
+  866  cc fpointer.c 
+  867  vi fpointer.c
+  868  cc fpointer.c 
+  869  vi fpointer.c
+  870  cc fpointer.c 
+  871  ./a.out
+  872  vi fpointer.c
+  873  cpp fpointer.c 
+  874  vi fpointer.c
+  875  cpp fpointer.c 
+  876  vi fpointer.c
+  877  cpp fpointer.c 
+  878  vi fpointer.c
+  879  cc fpointer.c 
+  880  nm a.out
+  881  strings a.out
+  882  cp fpointer.c debug.c
+  883  vi debug.c 
+  884  gdb a.out
+  885  cc debug.c 
+  886  vi debug.c 
+  887  cc debug.c 
+  888  gdb a.out
+  889  cc -g debug.c 
+  890  gdb a.out
+  891  vi debug.c 
+  892  cc -g debug.c 
+  893  gdb a.out
+  894  ls -al
+  895  cp ~pcc000/pcc2026/day7/rgba.c  .
+  896  vi rgba.c 
+  897  clear
+  898  cc rgba.c 
+  899  a.out
+  900  vi rgba.c 
+  901  cc rgba.c 
+  902  vi rgba.c 
+  903  cc rgba.c 
+  904  vi rgba.c 
+  905  cc rgba.c 
+  906  a.out
+  907  vi rgba.c 
+  908  cc rgba.c 
+  909  time a.out
+  910  vi rgba.c 
+  911  cc rgba.c 
+  912  time a.out
+  913  vi rgba.c 
+  914  cc rgba.c 
+  915  time a.out
+  916  vi rgba.c 
+  917  cc rgba.c 
+  918  time a.out
+  919  vi rgba.c 
+  920  cc rgba.c 
+  921  time a.out
+  922  vi rgba.c 
+  923  cc rgba.c 
+  924  time a.out
+  925  vi rgba.c 
+  926  cc rgba.c 
+  927  time a.out
+  928  cc -g -pg rgba.c 
+  929  a.out
+  930  ls -al
+  931  gprof a.out gmon.out 
+  932  vi rgba.c 
+  933  cc -g -pg rgba.c 
+  934  a.out
+  935  gprof a.out gmon.out 
+  936  vi rgba.c 
+  937  cc -g -pg rgba.c 
+  938  vi rgba.c 
+  939  cc -g -pg rgba.c 
+  940  a.out
+  941  gprof 
+  942  vi rgba.c 
+  943  cc -g -pg rgba.c 
+  944  a.out
+  945  gprof 
+  946  4.69
+  947  vi rgba.c 
+  948  cc rgba.c 
+  949  time a.out
+  950  cc -O3 rgba.c 
+  951  time a.out
+  952  cc -O3 -pg rgba.c 
+  953  a.out
+  954  gprof 
+  955  vi rgba.c 
+  956  cc -O3 -pg rgba.c 
+  957  cc -pg rgba.c 
+  958  a.out
+  959  gprof 
+  960  vi rgba.c 
+  961  cc -pg rgba.c 
+  962  vi rgba.c 
+  963  cc -pg rgba.c 
+  964  vi rgba.c 
+  965  cc -pg rgba.c 
+  966  vi rgba.c 
+  967  cc -pg rgba.c 
+  968  vi rgba.c 
+  969  cc -pg rgba.c 
+  970  vi rgba.c 
+  971  cc -pg rgba.c 
+  972  a.out
+  973  gprof 
+  974  RGBmulF:
+  975  logout
+  976  ls
+  977  ls -al
+  978  cd pcc2026/day7/
+  979  cp ~pcc016/smile.png  .
+  980  ls
+  981  vi png_pr.c
+  982  cc -o png png_pr.c -lpng
+  983  vi png_pr.c
+  984  cc -o png png_pr.c -lpng
+  985  png smile.png 
+  986  ls
+  987  vi png_pr.c
+  988  cc -o png png_pr.c -lpng
+  989  png
+  990  ls -al
+  991  cd pcc2026/
+  992  git pull
+  993  mkdir day8
+  994  cd day8/
+  995  cp ../day7/rgba.c .
+  996  cc -o rgba_O0 -O0 rgba.c 
+  997  cc -o rgba_g -g rgba.c 
+  998  cc -o rgba_gpg -g -pg rgba.c 
+  999  cc -o rgba_O1 -O1 rgba.c 
+ 1000  cc -o rgba_O2 -O2 rgba.c
+ 1001  cc -o rgba_O3 -O3 rgba.c
+ 1002  cc -o rgba_Og -Og rgba.c
+ 1003  cc -o rgba_Os -Os rgba.c
+ 1004  cc -o rgba_Oz -Oz rgba.c
+ 1005  ls -al
+ 1006  for f in rgba_*; do time $f >> perf.txt; done
+ 1007  cat perf.txt 
+ 1008  for f in rgba_*; do time $f 1>/dev/null 2>> perf.txt; done
+ 1009  for f in rgba_*; do { time $f ;} 2>> perf.txt; done
+ 1010  cat perf.txt 
+ 1011  for f in rgba_*; do { echo $f":"; time $f ;} 2>> perf.txt; done
+ 1012  for f in rgba_*; do echo $f ; { time $f ;} 2>> perf.txt; done
+ 1013  for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
+ 1014  rm perf.txt 
+ 1015  for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
+ 1016  cat perf.txt 
+ 1017  vi rgba.c
+ 1018  history
+ 1019  cc -o rgba_O0 -O0 rgba.c ; cc -o rgba_g -g rgba.c ; cc -o rgba_gpg -g -pg rgba.c  ; cc -o rgba_O1 -O1 rgba.c ; cc -o rgba_O2 -O2 rgba.c; cc -o rgba_O3 -O3 rgba.c; cc -o rgba_Og -Og rgba.c; cc -o rgba_Os -Os rgba.c; cc -o rgba_Oz -Oz rgba.c
+ 1020  rm perf.txt; for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
+ 1021  cat perf.txt 
+ 1022  ls -al
+ 1023  history
+ 1024  history > hfile
