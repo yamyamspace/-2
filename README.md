@@ -358,7 +358,7 @@ PINT ptr1, ptr2 == int *ptr1, *ptr2
 
 데이터 타입 바꾸는것 = aliasing 
 
-# gdb
+# gdb (디버깅 옵션 -g)
     * cd, list (+ 함수명){소스코드 보여줌}, run, next, continue, print, b{브레이크 포인트트}, backtrace
 core dumped : 프로그램이 치명적인 에러로 죽으면서 그 순간의 메모리 상태를 core파일로 저장
 
