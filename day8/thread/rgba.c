@@ -79,6 +79,7 @@ int main()
 	pthread_create(&thread_i1, NULL, calc_with_int1, NULL);
 	pthread_create(&thread_i2, NULL, calc_with_int2, NULL);
 	pthread_create(&thread_f, NULL, calc_with_float, NULL);
+	
 	printf("Three thread started\n");
 	pthread_join(thread_i1, &result_i1);
 	printf("Three thread i1 finished\n");
