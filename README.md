@@ -431,6 +431,7 @@ gcc 컴파일 최적화 (-O(대문자)):
 
 ```c
 for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
+//위 코드로 여러 파일의 성능(time) 비교
 ```
 
 * Makefile 만들기
@@ -478,3 +479,5 @@ clean:
 
 # DO NOT DELETE
 ```
+
+mutex를 사용하여 static과 global 변수를 컨트롤하기.
