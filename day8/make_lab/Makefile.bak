@@ -1,26 +1,28 @@
-# 1. Ç·α׷¥ ¼³d
+# 1. 컴파일러 및 컴파일 옵션 설정
 CC = gcc
 CFLAGS = -Wall -Wextra -O2
 TARGET = my_program
 
-# 2. ¼ҽº ¹×¿:êƮ ÆÀ ¸®½ºƮ
+# 2. 소스 파일 및 오브젝트 파일 목록
 SRCS = 03_main.c 03_func.c
 OBJS = $(SRCS:.c=.o)
 
-# 3. ±⺻ ºô±Ô¢
+# 3. 기본 빌드 타겟
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# 4. Àx¼º »ýĢ (gccmakedep »ç)
+# 4. 의존성 생성
+# gccmakedep을 이용하여 헤더 파일 의존성을 자동으로 추가
 depend:
 	gccmakedep $(SRCS)
 
-# 5. d¸® ±Ô¢
+# 5. 빌드 결과물 처리
+#실행파일과 오브젝트 파일 모두 삭제
 clean:
 	rm -f $(TARGET) $(OBJS)
 
-# À ¶ó¾Ʒ¡¿¡ gccmakedepÀ Àx¼º dº¸¸¦ Àµ¿8·ÎÃ°¡Ç´ϴÙ
+# 아래 내용은 gccmakedep이 자동으로 추가하는 의존성 정보
 # DO NOT DELETE
 
