@@ -417,6 +417,7 @@ finish 명령은 현재 함수 끝까지 실행하고 호출한 함수로 돌아
 # Day8
 
 * 개발하는 아키텍처의 특징 문서 읽기 optimizaion법. ex) arm9에서는 레지스터 4개 이하(변수 4개 이하) 쓰는게 빠름.
+* performance속도: cpu(레지스터 > cache(l1,l2)) > 메모리> storage > io > human( ex) scanf)
 * 속도 때문에 숫자 뒤에 f꼭 붙이기 안붙이면 double이 되는데 정밀도는 올라가지만 그만큼 느려짐(약 8배). 
 ```c
 for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
@@ -426,8 +427,8 @@ for f in rgba_*; do echo $f >> perf.txt ; { time $f ;} 2>> perf.txt; done
  핵심원리: 타임 스탬프 비교. 재료(dependency)가 결과물(target)보다 더 최신인가? ex) 03_main.o 와 03_main.c의 수정시간 time stamp비교하여 어떤 파일이 컴파일이 필요한지 알아냄. 
  파일이 수정되지 않았지만 컴파일 하고싶을때 "touch 파일명"을 한 후 make하면 컴파일됨.
 
- ```c
- # 1. 컴파일러 설정
+```c
+# 1. 컴파일러 설정
 CC = gcc
 TARGET = my_program
 
